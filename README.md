@@ -77,5 +77,6 @@ Ekran Görüntüleri
 
 MVVM mimarisini uygulayan bir proje düzeni
  
-     
+     ![image](https://github.com/user-attachments/assets/97885ec1-2a0d-4b84-970c-3a6a3baf87b4)
+
 
