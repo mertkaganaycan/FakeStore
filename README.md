@@ -5,88 +5,86 @@ Mimari Yapı
 
 com.example.fakestore
  ├── adapter
- │   └── ProductAdapter.kt      # RecyclerView Adapter + Glide ile resim
+ │   └── ProductAdapter.kt     # RecyclerView Adapter + image loading with Glide
  ├── api
- │   ├── ProductApi.kt          # Retrofit endpoint tanımı
- │   └── RetrofitInstance.kt    # Singleton Retrofit yapılandırması
+ │   ├── ProductApi.kt          # Retrofit endpoint definition
+ │   └── RetrofitInstance.kt    # Singleton Retrofit configuration
  ├── model
- │   └── Product.kt             # Ürün veri sınıfı (Model)
+ │   └── Product.kt             # Data class for the product (Model)
  ├── repository
- │   └── ProductRepository.kt   # API çağrılarının yönetimi (Repository)
+ │   └── ProductRepository.kt   # Manages API calls (Repository)
  ├── ui
- │   └── MainActivity.kt        # Ana ekran (View)
+ │   └── MainActivity.kt       # Main screen (View)
  └── viewmodel
-     └── ProductViewModel.kt    # ViewModel, LiveData yönetimi
+     └── ProductViewModel.kt    # ViewModel, manages LiveData
 
 
 Model
-Product.kt → FakeStore API’den gelen ürün verilerini temsil eden veri sınıfı.
+Product.kt → Data class representing product information coming from the FakeStore API.
 
 View (UI)
-MainActivity.kt → Ürün listesini gösteren ana ekran.
-ProductAdapter.kt → RecyclerView içinde görüntülenecek her bir ürün kartının bağlanması.
-XML dosyaları (activity_main.xml, item_product.xml) → UI bileşenlerinin görsel tanımları.
+MainActivity.kt → The main screen displaying the product list.
+ProductAdapter.kt → Binds each product card to be displayed in the RecyclerView.
+XML files (activity_main.xml, item_product.xml) → Visual definitions of UI components.
 
 ViewModel
-ProductViewModel.kt → API’den gelen verileri yönetir, LiveData ile güncellenen verileri UI’a iletir.
+ProductViewModel.kt → Manages data coming from the API, uses LiveData to update the UI.
 
 Repository
-ProductRepository.kt → ViewModel ile API arasındaki veri trafiğini yönetir, Retrofit çağrılarını gerçekleştirir.
-Bu yapı, Model ve View bileşenlerinin birbirlerinden gevşek bağlı (loose coupling) olmasını ve test edilebilirliğin artmasını sağlar.
+ProductRepository.kt → Handles data flow between the ViewModel and the API, executes Retrofit calls.
+This structure ensures loose coupling between Model and View components and increases testability.
 
-
-Kullanılan Teknolojiler
-
+Technologies Used
 Retrofit
-•	Açıklama: HTTP isteklerini basitleştirmeye yarayan, Square tarafından geliştirilmiş bir kütüphane.
-•	Kullanım:
-o	RetrofitInstance.kt dosyasında BASE_URL = "https://fakestoreapi.com/" tanımlanır.
-o	ProductApi.kt içinde @GET("products") gibi endpoint’ler belirtilir.
-o	ProductRepository.kt bu API’yi çağırarak veriyi ViewModel’e iletir.
+Description: A library developed by Square to simplify HTTP requests.
+Usage:
+In RetrofitInstance.kt, we define BASE_URL = "https://fakestoreapi.com/".
+In ProductApi.kt, we specify endpoints such as @GET("products").
+In ProductRepository.kt, this API is called to fetch data and provide it to the ViewModel.
 
 Glide
-•	Açıklama: Resim yükleme ve önbellekleme (cache) kütüphanesi.
-•	Kullanım:
-o	ProductAdapter.kt içerisinde Glide.with(context).load(url).into(imageView) yöntemiyle ürün resimleri indirip ImageView’a yüklenir.
-o	Performans sorunlarını ve tekrar indirme ihtiyacını azaltır.
+Description: A library for image loading and caching.
+Usage:
+In ProductAdapter.kt, use Glide.with(context).load(url).into(imageView) to download product images into an ImageView.
+Reduces performance issues and repeated downloads.
 
 RecyclerView
-•	Açıklama: Liste veya grid yapılarını verimli bir şekilde göstermek için kullanılan bir Android bileşeni.
-•	Kullanım:
-o	MainActivity.kt içinde LinearLayoutManager ile dikey liste olarak ayarlanır.
-o	ProductAdapter.kt ile veri bağlanması ve ViewHolder yönetimi yapılır.
+Description: An Android component for efficiently displaying lists or grids.
+Usage:
+In MainActivity.kt, set up a vertical list with LinearLayoutManager.
+In ProductAdapter.kt, manage data binding and ViewHolder logic.
+
 ViewBinding
+Description: A mechanism that makes views defined in XML safer and more accessible.
+Usage:
+In build.gradle, enable buildFeatures { viewBinding = true }.
+In MainActivity.kt and adapter files, use inflate(...) to create binding objects (e.g., ItemProductBinding).
 
-•	Açıklama: XML’de tanımlanan görünümleri (views) daha güvenli ve kolay erişilebilir hale getiren bir mekanizma.
-•	Kullanım:
-o	build.gradle içinde buildFeatures { viewBinding = true }.
-o	MainActivity.kt ve adapter dosyalarında inflate(...) yöntemiyle oluşturulan binding nesneleri kullanılır (örneğin ItemProductBinding).
+How It Works?
 
+When the App Launches
+MainActivity (View) requests data from ProductViewModel.
 
-
-Nasıl Çalışır?
-Uygulama Açıldığında
-o	MainActivity (View) → ProductViewModel’dan verileri çekmesini ister.
 ViewModel
-o	fetchProducts() metodu ile ProductRepository üzerinden API çağrısı başlatır.
+The fetchProducts() method initiates an API call via ProductRepository.
+
 Repository
-o	RetrofitInstance.api.getProducts() çalıştırarak FakeStore API’den gelen JSON yanıtını Product listesine dönüştürür.
-Veriler Geldiğinde
-o	ViewModel, LiveData<List<Product>> olarak listeyi günceller.
-o	MainActivity bu listeyi gözlemlediği için otomatik olarak güncellenir ve RecyclerView adaptörüne yeni listeyi verir.
-Görünümde
-o	ProductAdapter, her bir ürün öğesi için item_product.xml layout’unu kullanarak, resimleri Glide ile indirir ve TextView gibi bileşenlere değerleri atar.
-Bu sayede kullanıcı, ana ekranda ürün listesini (resimleri, isimleri, fiyatları, açıklamaları) görür.
+Calls RetrofitInstance.api.getProducts() to retrieve the JSON response from the FakeStore API and convert it into a Product list.
 
- 
- 
+When Data Arrives
+The ViewModel updates LiveData<List<Product>>.
+Since MainActivity observes this list, it automatically updates and provides the new list to the RecyclerView adapter.
+
+On the Screen
+ProductAdapter uses the item_product.xml layout for each product item, downloads images with Glide, and assigns values to components like TextView.
+Thus, the user sees the product list (images, names, prices, descriptions) on the main screen.
  
  
  
 
-Ekran Görüntüleri
+Screenshots
 
-MVVM mimarisini uygulayan bir proje düzeni
+An example project layout applying the MVVM architecture.
  
 ![Picture1](Screenshots/Picture1.png)
 ![Picture2](Screenshots/Picture2.png)
