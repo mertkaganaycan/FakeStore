@@ -36,6 +36,7 @@ ProductRepository.kt → Handles data flow between the ViewModel and the API, ex
 This structure ensures loose coupling between Model and View components and increases testability.
 
 Technologies Used
+
 Retrofit
 Description: A library developed by Square to simplify HTTP requests.
 Usage:
