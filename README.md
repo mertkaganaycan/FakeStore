@@ -3,6 +3,7 @@ Case Study
 
 Architecture(MVVM)
 
+```
 com.example.fakestore
  ├── adapter
  │   └── ProductAdapter.kt     # RecyclerView Adapter + image loading with Glide
@@ -17,7 +18,7 @@ com.example.fakestore
  │   └── MainActivity.kt       # Main screen (View)
  └── viewmodel
      └── ProductViewModel.kt    # ViewModel, manages LiveData
-
+```
 
 Model
 Product.kt → Data class representing product information coming from the FakeStore API.
