@@ -1,7 +1,7 @@
 Case Study
-Proje Mimarisi (MVVM)
 
-Mimari Yapı
+
+Architecture(MVVM)
 
 com.example.fakestore
  ├── adapter
