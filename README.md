@@ -82,20 +82,20 @@ In MainActivity.kt and adapter files, use inflate(...) to create binding objects
 
 How It Works?
 
-When the App Launches
+When the App Launches:
 MainActivity (View) requests data from ProductViewModel.
 
-ViewModel
+ViewModel:
 The fetchProducts() method initiates an API call via ProductRepository.
 
-Repository
+Repository:
 Calls RetrofitInstance.api.getProducts() to retrieve the JSON response from the FakeStore API and convert it into a Product list.
 
-When Data Arrives
+When Data Arrives:
 The ViewModel updates LiveData<List<Product>>.
 Since MainActivity observes this list, it automatically updates and provides the new list to the RecyclerView adapter.
 
-On the Screen
+On the Screen:
 ProductAdapter uses the item_product.xml layout for each product item, downloads images with Glide, and assigns values to components like TextView.
 Thus, the user sees the product list (images, names, prices, descriptions) on the main screen.
  
