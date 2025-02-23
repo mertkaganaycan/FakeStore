@@ -79,6 +79,9 @@ MVVM mimarisini uygulayan bir proje düzeni
  
 ![Picture1](Screenshots/Picture1.png)
 ![Picture2](Screenshots/Picture2.png)
-
+![Picture1](Screenshots/Picture3.png)
+![Picture2](Screenshots/Picture4.png)
+![Picture1](Screenshots/Picture5.png)
+![Picture2](Screenshots/Picture6.png)
 
 
