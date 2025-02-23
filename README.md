@@ -32,35 +32,56 @@ ViewModel
 ProductViewModel.kt → Manages data coming from the API, uses LiveData to update the UI.
 
 Repository
+
 ProductRepository.kt → Handles data flow between the ViewModel and the API, executes Retrofit calls.
 This structure ensures loose coupling between Model and View components and increases testability.
+
 
 Technologies Used
 
 Retrofit
+
 Description: A library developed by Square to simplify HTTP requests.
+
 Usage:
+
 In RetrofitInstance.kt, we define BASE_URL = "https://fakestoreapi.com/".
 In ProductApi.kt, we specify endpoints such as @GET("products").
 In ProductRepository.kt, this API is called to fetch data and provide it to the ViewModel.
 
+
+
 Glide
+
 Description: A library for image loading and caching.
+
 Usage:
+
 In ProductAdapter.kt, use Glide.with(context).load(url).into(imageView) to download product images into an ImageView.
 Reduces performance issues and repeated downloads.
 
+
+
 RecyclerView
+
 Description: An Android component for efficiently displaying lists or grids.
+
 Usage:
 In MainActivity.kt, set up a vertical list with LinearLayoutManager.
 In ProductAdapter.kt, manage data binding and ViewHolder logic.
 
 ViewBinding
+
 Description: A mechanism that makes views defined in XML safer and more accessible.
+
 Usage:
+
 In build.gradle, enable buildFeatures { viewBinding = true }.
 In MainActivity.kt and adapter files, use inflate(...) to create binding objects (e.g., ItemProductBinding).
+
+
+
+
 
 How It Works?
 
