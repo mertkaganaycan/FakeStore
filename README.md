@@ -34,6 +34,9 @@ Repository
 ProductRepository.kt → ViewModel ile API arasındaki veri trafiğini yönetir, Retrofit çağrılarını gerçekleştirir.
 Bu yapı, Model ve View bileşenlerinin birbirlerinden gevşek bağlı (loose coupling) olmasını ve test edilebilirliğin artmasını sağlar.
 
+
+Kullanılan Teknolojiler
+
 Retrofit
 •	Açıklama: HTTP isteklerini basitleştirmeye yarayan, Square tarafından geliştirilmiş bir kütüphane.
 •	Kullanım:
@@ -59,6 +62,8 @@ ViewBinding
 o	build.gradle içinde buildFeatures { viewBinding = true }.
 o	MainActivity.kt ve adapter dosyalarında inflate(...) yöntemiyle oluşturulan binding nesneleri kullanılır (örneğin ItemProductBinding).
 
+
+
 Nasıl Çalışır?
 Uygulama Açıldığında
 o	MainActivity (View) → ProductViewModel’dan verileri çekmesini ister.
@@ -72,6 +77,12 @@ o	MainActivity bu listeyi gözlemlediği için otomatik olarak güncellenir ve R
 Görünümde
 o	ProductAdapter, her bir ürün öğesi için item_product.xml layout’unu kullanarak, resimleri Glide ile indirir ve TextView gibi bileşenlere değerleri atar.
 Bu sayede kullanıcı, ana ekranda ürün listesini (resimleri, isimleri, fiyatları, açıklamaları) görür.
+
+ 
+ 
+ 
+ 
+ 
 
 Ekran Görüntüleri
 
