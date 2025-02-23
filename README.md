@@ -64,6 +64,7 @@ RecyclerView
 Description: An Android component for efficiently displaying lists or grids.
 
 Usage:
+
 In MainActivity.kt, set up a vertical list with LinearLayoutManager.
 In ProductAdapter.kt, manage data binding and ViewHolder logic.
 
