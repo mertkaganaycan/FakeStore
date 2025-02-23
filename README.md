@@ -40,7 +40,6 @@ This structure ensures loose coupling between Model and View components and incr
 Technologies Used
 
 Retrofit
-
 Description: A library developed by Square to simplify HTTP requests.
 
 Usage:
@@ -52,7 +51,6 @@ In ProductRepository.kt, this API is called to fetch data and provide it to the 
 
 
 Glide
-
 Description: A library for image loading and caching.
 
 Usage:
@@ -63,7 +61,6 @@ Reduces performance issues and repeated downloads.
 
 
 RecyclerView
-
 Description: An Android component for efficiently displaying lists or grids.
 
 Usage:
@@ -71,7 +68,6 @@ In MainActivity.kt, set up a vertical list with LinearLayoutManager.
 In ProductAdapter.kt, manage data binding and ViewHolder logic.
 
 ViewBinding
-
 Description: A mechanism that makes views defined in XML safer and more accessible.
 
 Usage:
